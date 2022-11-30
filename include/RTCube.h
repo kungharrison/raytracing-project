@@ -36,6 +36,20 @@ public:
             // Bottom face
             { 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f }
         };
+		
+        // convert above GLfloats into vector of all triangles
+        const std::vector<Triangle> triangle_soup;
+        for (int i = 0; i < 24; i++) {
+            std::vector<glm::vec3> PList;
+            std::vector<glm::vec3> NList;
+            for (int j = 0; j < 3; j++) {
+                PList.push_back(positions[i][j]);
+                NList.push_back(normals[i][j]);
+			}
+            triangle_soup[i]->P = PList;
+            triangle_soup[i]->N = NList;
+        }
+		
         // Cube indices
         const GLuint indices[36] = {
             0, 1, 2, 0, 2, 3, // Front face
