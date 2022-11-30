@@ -12,7 +12,7 @@ file(
 )
 
 # Add executables
-add_executable(ModelViewer ${SOURCES_SCENE_VIEWER} "include/Image.h" "src/Image.cpp")
+add_executable(ModelViewer ${SOURCES_SCENE_VIEWER} "include/Image.h" "src/Image.cpp" "include/Triangle.h" "include/RTGeometry.h")
 
 # Include headers
 set(
