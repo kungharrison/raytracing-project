@@ -18,7 +18,7 @@
 #include "Light.h"
 #include "RTGeometry.h"
 #include "Material.h"
-#include "Model.h"
+#include "RTModel.h"
 
 #ifndef __SCENE_H__
 #define __SCENE_H__
@@ -37,9 +37,9 @@ public:
     SurfaceShader* shader;
     // The following are containers of objects serving as the object palettes.
     // The containers store pointers so that they can also store derived class objects.
-    std::map< std::string, Geometry* > geometry;
+    std::map< std::string, RTGeometry* > geometry;
     std::map< std::string, Material* > material;
-    std::map< std::string, Model* > model;
+    std::map< std::string, RTModel* > model;
     std::map< std::string, Light* > light;
     
     // The container of nodes will be the scene graph after we connect the nodes by setting the child_nodes.

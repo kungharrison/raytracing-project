@@ -1,5 +1,5 @@
 /**************************************************
-Scene.cpp contains the implementation of the draw command
+RTScene.cpp contains the implementation of the draw command
 *****************************************************/
 #include "RTScene.h"
 #include "RTCube.h"
@@ -40,6 +40,7 @@ void RTScene::buildTriangleSoup(void){
     /**
      * TODO: (HW3 hint: you should do something here)
      */
+    matrix_stack.push(cur_VM);
     
     // Compute total number of connectivities in the graph; this would be an upper bound for
     // the stack size in the depth first search over the directed acyclic graph
@@ -62,6 +63,7 @@ void RTScene::buildTriangleSoup(void){
         /**
          * TODO: (HW3 hint: you should do something here)
          */
+        cur_VM = matrix_stack.top();  matrix_stack.pop();
         
         // draw all the models at the current node
         for ( size_t i = 0; i < cur -> models.size(); i++ ){
@@ -71,12 +73,12 @@ void RTScene::buildTriangleSoup(void){
              * TODO: (HW3 hint: you should do something here)
              */
 
-            shader -> modelview = cur_VM; // TODO: HW3: Without updating cur_VM, modelview would just be camera's view matrix.
+            shader -> modelview = cur_VM * cur->modeltransforms[i]; // TODO: HW3: Without updating cur_VM, modelview would just be camera's view matrix.
             shader -> material  = ( cur -> models[i] ) -> material;
             
             // The draw command
             shader -> setUniforms();
-            ( cur -> models[i] ) -> geometry -> draw();
+            triangle_soup.push_back(( cur -> models[i] ) -> geometry -> elements);
         }
         
         // Continue the DFS: put all the child nodes of the current node in the stack
@@ -85,6 +87,7 @@ void RTScene::buildTriangleSoup(void){
             /**
              * TODO: (HW3 hint: you should do something here)
              */
+            matrix_stack.push(cur_VM * cur->childtransforms[i]);
         }
         
     } // End of DFS while loop.
