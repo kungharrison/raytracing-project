@@ -9,3 +9,14 @@
 104	1261	6915453584579965	CMakeFiles/ModelViewer.dir/src/Shader.cpp.obj	1fc14a420db9219b
 98	1967	6915453591629950	CMakeFiles/ModelViewer.dir/src/Scene.cpp.obj	d8d584fc56be2e6a
 1725	2021	6915457614436736	ModelViewer.exe	e9abd9973e0fa07
+10	54	0	CMakeFiles/CopyShaders	5a15279e837318ab
+10	54	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyShaders	5a15279e837318ab
+15	88	0	CMakeFiles/CopyModels	d5067ee1f53b758
+15	88	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyModels	d5067ee1f53b758
+88	1364	6915509008587392	CMakeFiles/ModelViewer.dir/src/Image.cpp.obj	613e31778db2e612
+92	1700	6915509011818574	CMakeFiles/ModelViewer.dir/src/main.cpp.obj	9eb8d408c75dad54
+1700	1930	6915509013746972	ModelViewer.exe	9fc6419900246e1e
+13	62	0	CMakeFiles/CopyShaders	5a15279e837318ab
+13	62	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyShaders	5a15279e837318ab
+17	106	0	CMakeFiles/CopyModels	d5067ee1f53b758
+17	106	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyModels	d5067ee1f53b758
