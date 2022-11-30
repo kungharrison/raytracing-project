@@ -1,0 +1,11 @@
+# ninja log v5
+15	64	0	CMakeFiles/CopyShaders	5a15279e837318ab
+15	64	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyShaders	5a15279e837318ab
+85	1033	6915453582288756	CMakeFiles/ModelViewer.dir/src/Camera.cpp.obj	c8548bca8c810ff6
+111	1832	6915453590294194	CMakeFiles/ModelViewer.dir/src/main.cpp.obj	9eb8d408c75dad54
+19	108	0	CMakeFiles/CopyModels	d5067ee1f53b758
+19	108	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyModels	d5067ee1f53b758
+95	1724	6915457611882282	CMakeFiles/ModelViewer.dir/src/Obj.cpp.obj	a448abea7bef168e
+104	1261	6915453584579965	CMakeFiles/ModelViewer.dir/src/Shader.cpp.obj	1fc14a420db9219b
+98	1967	6915453591629950	CMakeFiles/ModelViewer.dir/src/Scene.cpp.obj	d8d584fc56be2e6a
+1725	2021	6915457614436736	ModelViewer.exe	e9abd9973e0fa07
