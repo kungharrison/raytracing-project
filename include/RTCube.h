@@ -5,7 +5,6 @@
 
 class RTCube : public RTGeometry {
 public:
-    std::vector<Triangle> triangle_soup;
     void init(void) {
         // vertex positions
         const GLfloat positions[24][3] = {
@@ -46,19 +45,9 @@ public:
                 PList.push_back(positions[i][j]);
                 NList.push_back(normals[i][j]);
             }
-            triangle_soup[i]->P = PsList;
-            triangle_soup[i]->N = NList;
+            elements[i]->P = PsList;
+            elements[i]->N = NList;
         }
-
-        // Cube indices
-        const GLuint indices[36] = {
-            0, 1, 2, 0, 2, 3, // Front face
-            4, 5, 6, 4, 6, 7, // Back face
-            8, 9, 10, 8, 10, 11, // Left face
-            12, 13, 14, 12, 14, 15, // Right face
-            16, 17, 18, 16, 18, 19, // Top face
-            20, 21, 22, 20, 22, 23 // Bottom face
-        };
     };
 };
 #endif
