@@ -7,16 +7,15 @@
 class Image {
 public:
 	Image(int width, int height);
-	void Initialize();
+	void initialize();
 	void draw();
-	std::vector<glm::vec3> setPixels(std::vector<glm::vec3> pixels);
+	void setPixels();
 private:
 	int width;
 	int height;
 	unsigned int fbo;
 	unsigned int texture;
 	std::vector<glm::vec3> pixels;
-};
 };
 
 #endif
