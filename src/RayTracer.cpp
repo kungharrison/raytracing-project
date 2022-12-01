@@ -25,6 +25,13 @@ Ray RayTracer::RayThruPixel(Camera cam, int i, int j, int width, int height) {
 }
 
 Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
+    Intersection hit;
+    glm::mat4 x = inverse(glm::mat4(glm::vec4(triangle.P[0], 1), glm::vec4(triangle.P[1], 1), glm::vec4(triangle.P[2], 1), glm::vec4(-ray.dir, 0)));
+    glm::vec4 y = x * glm::vec4(ray.p0, 1);
+    hit.dist = y[3];
+    hit.P = y[0] * triangle.P[0] + y[1] * triangle.P[1] + y[2] * triangle.P[2];
+    hit.N = normalize(y[0] * triangle.N[0] + y[1] * triangle.N[1] + y[2] * triangle.N[2]);
+    hit.triangle = &triangle;
     
 }
 
