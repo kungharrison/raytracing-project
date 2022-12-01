@@ -48,19 +48,19 @@ void RTScene::init(void) {
     material["bulb"]->shininess = 200.0f;
 
     // Create a model palette
-    model["teapot1"] = new Model;
+    model["teapot1"] = new RTModel;
     model["teapot1"]->geometry = geometry["teapot"];
     model["teapot1"]->material = material["silver"];
-    model["teapot2"] = new Model;
+    model["teapot2"] = new RTModel;
     model["teapot2"]->geometry = geometry["teapot"];
     model["teapot2"]->material = material["ceramic"];
-    model["table piece"] = new Model;
+    model["table piece"] = new RTModel;
     model["table piece"]->geometry = geometry["cube"];
     model["table piece"]->material = material["wood"];
-    model["bunny"] = new Model;
+    model["bunny"] = new RTModel;
     model["bunny"]->geometry = geometry["bunny"];
     model["bunny"]->material = material["turquoise"];
-    model["bulb"] = new Model;
+    model["bulb"] = new RTModel;
     model["bulb"]->geometry = geometry["cube"];
     model["bulb"]->material = material["bulb"];
 
