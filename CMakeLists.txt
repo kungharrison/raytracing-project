@@ -12,7 +12,8 @@ file(
 )
 
 # Add executables
-add_executable(ModelViewer ${SOURCES_SCENE_VIEWER} "include/Image.h" "src/Image.cpp" "include/Triangle.h" "include/RTGeometry.h" "include/RTObj.h" "src/RTObj.cpp" "include/RTModel.h")
+add_executable(ModelViewer ${SOURCES_SCENE_VIEWER} "include/Image.h" "src/Image.cpp" "include/Triangle.h" "include/RTGeometry.h" "include/RTObj.h" 
+	"src/RTObj.cpp" "include/RTModel.h" "include/Ray.h" "src/RTScene.cpp" "src/RayTracer.cpp")
 
 # Include headers
 set(

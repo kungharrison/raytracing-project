@@ -6,14 +6,17 @@
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include "Screenshot.h"
-#include "Scene.h"
+#include "RTScene.h"
+#include "Image.h"
+#include "Ray.h"
 
 
 static const int width = 800;
 static const int height = 600;
 static const char* title = "Scene viewer";
+static Image image(width, height);
 static const glm::vec4 background(0.1f, 0.2f, 0.3f, 1.0f);
-static Scene scene;
+static RTScene scene;
 
 #include "hw3AutoScreenshots.h"
 
@@ -41,14 +44,16 @@ void initialize(void){
     // Initialize scene
     scene.init();
 
+    image.initialize();
+
     // Enable depth test
     glEnable(GL_DEPTH_TEST);
 }
 
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    
-    scene.draw();
+    RayTracer::Raytrace(*scene.camera, scene, image);
+    image.draw();
     
     glutSwapBuffers();
     glFlush();
