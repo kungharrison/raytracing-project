@@ -32,7 +32,8 @@ Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
     hit.P = y[0] * triangle.P[0] + y[1] * triangle.P[1] + y[2] * triangle.P[2];
     hit.N = normalize(y[0] * triangle.N[0] + y[1] * triangle.N[1] + y[2] * triangle.N[2]);
     hit.triangle = &triangle;
-    
+    hit.V = ray.dir;
+    return hit;
 }
 
 Intersection RayTracer::Intersect(Ray ray, RTScene scene) {
