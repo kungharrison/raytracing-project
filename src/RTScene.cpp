@@ -78,7 +78,16 @@ void RTScene::buildTriangleSoup(void){
             
             // The draw command
             shader -> setUniforms();
-            triangle_soup.push_back(( cur -> models[i] ) -> geometry -> elements);
+            for (Triangle t: ( cur -> models[i] ) -> geometry -> elements) {
+                for (glm::vec3 point: t.P) {
+                    point = (shader -> modelview) * glm::vec4(point, 1);
+                }
+                for (glm::vec3 point: t.N) {
+                    point = transpose(inverse((shader -> modelview))) * glm::vec4(point, 1);
+                }
+                t.material = ( cur -> models[i] ) -> material;
+                triangle_soup.push_back(t);
+            }
         }
         
         // Continue the DFS: put all the child nodes of the current node in the stack
