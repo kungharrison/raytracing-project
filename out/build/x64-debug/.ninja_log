@@ -78,3 +78,9 @@
 15	103	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyModels	d5067ee1f53b758
 104	1497	6915615498507112	CMakeFiles/ModelViewer.dir/src/RTScene.cpp.obj	d6c5f98954f604b7
 1497	1726	6915615500311080	ModelViewer.exe	697a649a284c121e
+5	51	0	CMakeFiles/CopyShaders	5a15279e837318ab
+5	51	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyShaders	5a15279e837318ab
+9	98	0	CMakeFiles/CopyModels	d5067ee1f53b758
+9	98	0	C:/Users/kungh/Documents/GitHub/raytracing-project/out/build/x64-debug/CMakeFiles/CopyModels	d5067ee1f53b758
+98	2023	6915629927393423	CMakeFiles/ModelViewer.dir/src/RTScene.cpp.obj	d6c5f98954f604b7
+2023	2231	6915629929090192	ModelViewer.exe	697a649a284c121e

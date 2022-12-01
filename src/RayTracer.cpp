@@ -49,5 +49,22 @@ Intersection RayTracer::Intersect(Ray ray, RTScene scene) {
 }
 
 glm::vec3 RayTracer::FindColor(Intersection hit, int recursion_depth) {
+    glm::vec3 color = glm::vec3(0, 0, 0);
+    if (!hit.hit) return glm::vec3(0, 0, 0);
 
+    if (hit.material->texture) {
+        color = hit.material->texture->GetColor(hit.texCoord.x, hit.texCoord.y);
+    }
+    else {
+        color = hit.material->diffuse;
+    }
+
+    if (hit.material->reflective && recursion_depth < 2) {
+        Ray reflectRay;
+        reflectRay.p0 = hit.point;
+        reflectRay.dir = glm::normalize(hit.dir - 2 * glm::dot(hit.dir, hit.normal) * hit.normal);
+        Intersection reflectHit = Intersect(reflectRay, *hit.scene);
+        color += hit.material->reflective * FindColor(reflectHit, recursion_depth + 1);
+    }
+    return color;
 }
