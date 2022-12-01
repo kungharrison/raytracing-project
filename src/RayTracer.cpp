@@ -1,6 +1,6 @@
 #include "Ray.h"
 
-void RayTracer::Raytrace(Camera cam, Scene scene, Image &image) {
+void RayTracer::Raytrace(Camera cam, RTScene scene, Image &image) {
     int w = image.width; int h = image.height;
     for (int j=0; j<h; j++){
         for (int i=0; i<w; i++){
@@ -25,21 +25,21 @@ Ray RayTracer::RayThruPixel(Camera cam, int i, int j, int width, int height) {
 }
 
 Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
-
+    
 }
 
-// Intersection RayTracer::Intersect(Ray ray, Scene scene) {
-//     Distance mindist = INFINITY;
-//     Intersection hit;
-//     for (object in scene) { // Find closest intersection; test all objects
-//         Intersection hit_temp = Intersect(ray, object);
-//         if (hit_temp.dist< mindist){ // closer than previous hit
-//             mindist = hit_temp.dist;
-//             hit = hit_temp;
-//         }
-//     }
-//     return hit;
-// }
+Intersection RayTracer::Intersect(Ray ray, RTScene scene) {
+    float mindist = std::numeric_limits<float>::infinity();
+    Intersection hit;
+    for (Triangle t: scene.triangle_soup) { // Find closest intersection; test all objects
+        Intersection hit_temp = Intersect(ray, t);
+        if (hit_temp.dist < mindist) { // closer than previous hit
+            mindist = hit_temp.dist;
+            hit = hit_temp;
+        }
+    }
+    return hit;
+}
 
 glm::vec3 RayTracer::FindColor(Intersection hit, int recursion_depth) {
 
