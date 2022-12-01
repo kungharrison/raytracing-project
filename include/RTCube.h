@@ -38,15 +38,16 @@ public:
         };
 
         // convert above GLfloats into vector of all triangles
-        for (int i = 0; i < 24; i++) {
-            std::vector<glm::vec3> PList;
-            std::vector<glm::vec3> NList;
-            for (int j = 0; j < 3; j++) {
-                PList.push_back(positions[i][j]);
-                NList.push_back(normals[i][j]);
-            }
-            elements[i]->P = PsList;
-            elements[i]->N = NList;
+        		
+        for (int i = 0; i < 24 - 2; i++) {
+            Triangle newTriangle = Triangle();
+            newTriangle.P.push_back(glm::vec3(positions[i][0], positions[i][1], positions[i][2]));
+            newTriangle.P.push_back(glm::vec3(positions[i+1][0], positions[i+1][1], positions[i+1][2]));
+            newTriangle.P.push_back(glm::vec3(positions[i+2][0], positions[i+2][1], positions[i+2][2]));
+            newTriangle.N.push_back(glm::vec3(normals[i][0], normals[i][1], normals[i][2]));
+            newTriangle.N.push_back(glm::vec3(normals[i + 1][0], normals[i + 1][1], normals[i + 1][2]));
+            newTriangle.N.push_back(glm::vec3(normals[i + 2][0], normals[i + 2][1], normals[i + 2][2]));
+            elements.push_back(newTriangle);
         }
     };
 };
