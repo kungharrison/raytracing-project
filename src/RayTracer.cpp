@@ -23,3 +23,24 @@ Ray RayTracer::RayThruPixel(Camera cam, int i, int j, int width, int height) {
     ray.dir = normalize(alpha * cam.aspect * tan * u + beta * tan * v - w);
     return ray;
 }
+
+Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
+
+}
+
+// Intersection RayTracer::Intersect(Ray ray, Scene scene) {
+//     Distance mindist = INFINITY;
+//     Intersection hit;
+//     for (object in scene) { // Find closest intersection; test all objects
+//         Intersection hit_temp = Intersect(ray, object);
+//         if (hit_temp.dist< mindist){ // closer than previous hit
+//             mindist = hit_temp.dist;
+//             hit = hit_temp;
+//         }
+//     }
+//     return hit;
+// }
+
+glm::vec3 RayTracer::FindColor(Intersection hit, int recursion_depth) {
+
+}
