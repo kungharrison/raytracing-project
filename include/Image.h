@@ -9,13 +9,13 @@ public:
 	Image(int width, int height);
 	void initialize();
 	void draw();
-	void setPixels();
-private:
+	void setPixels(); // For testing purposes
 	int width;
 	int height;
+	std::vector<glm::vec3> pixels;
+private:
 	unsigned int fbo;
 	unsigned int texture;
-	std::vector<glm::vec3> pixels;
 };
 
 #endif
