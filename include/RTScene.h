@@ -20,14 +20,14 @@
 #include "Material.h"
 #include "RTModel.h"
 
-#ifndef __SCENE_H__
-#define __SCENE_H__
+#ifndef __RTSCENE_H__
+#define __RTSCENE_H__
 
 class Node {
 public:
     std::vector< Node* > childnodes;
     std::vector< glm::mat4 > childtransforms;
-    std::vector< Model* > models;
+    std::vector< RTModel* > models;
     std::vector< glm::mat4 > modeltransforms;
 };
 
@@ -64,7 +64,7 @@ public:
             delete entry.second;
         }
         // geometry
-        for(std::pair<std::string,Geometry*> entry : geometry ){
+        for(std::pair<std::string,RTGeometry*> entry : geometry ){
             delete entry.second;
         }
         // material
@@ -72,7 +72,7 @@ public:
             delete entry.second;
         }
         // model
-        for(std::pair<std::string,Model*> entry : model ){
+        for(std::pair<std::string,RTModel*> entry : model ){
             delete entry.second;
         }
         // model
