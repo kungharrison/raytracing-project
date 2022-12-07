@@ -75,12 +75,12 @@ void RTObj::init(const char * filename){
         std::vector<glm::vec3> PList;
         std::vector<glm::vec3> NList;
         if (i % 3 == 0) {
-			PList.push_back(vertices[i]);
-			PList.push_back(vertices[i + 1]);
-			PList.push_back(vertices[i + 2]);
-			NList.push_back(normals[i]);
-			NList.push_back(normals[i + 1]);
-			NList.push_back(normals[i + 2]);
+			PList.push_back(temp_vertices[i]);
+			PList.push_back(temp_vertices[i + 1]);
+			PList.push_back(temp_vertices[i + 2]);
+			NList.push_back(temp_normals[i]);
+			NList.push_back(temp_normals[i + 1]);
+			NList.push_back(temp_normals[i + 2]);
             elements[i].P = PList;
             elements[i].N = NList;
 		}
