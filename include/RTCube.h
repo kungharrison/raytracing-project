@@ -37,7 +37,7 @@ public:
             { 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f },{ 0.0f, -1.0f, 0.0f }
         };
         // Cube indices
-        const GLuint indices[36] = {
+        const GLuint indicies[36] = {
             0, 1, 2, 0, 2, 3, // Front face
             4, 5, 6, 4, 6, 7, // Back face
             8, 9, 10, 8, 10, 11, // Left face
@@ -48,14 +48,14 @@ public:
         // convert above GLfloats into vector of all triangles
         		
         for (int i = 0; i < 36; i+=3) {
-            Triangle *newTriangle = new Triangle();
-            newTriangle->P.push_back(glm::vec3(positions[indices[i]][0], positions[indices[i]][1], positions[indices[i]][2]));
-            newTriangle->P.push_back(glm::vec3(positions[indices[i+1]][0], positions[indices[i+1]][1], positions[indices[i+1]][2]));
-            newTriangle->P.push_back(glm::vec3(positions[indices[i+2]][0], positions[indices[i+2]][1], positions[indices[i+2]][2]));
-            newTriangle->N.push_back(glm::vec3(normals[indices[i]][0], normals[indices[i]][1], normals[indices[i]][2]));
-            newTriangle->N.push_back(glm::vec3(normals[indices[i+1]][0], normals[indices[i+1]][1], normals[indices[i+1]][2]));
-            newTriangle->N.push_back(glm::vec3(normals[indices[i+2]][0], normals[indices[i+2]][1], normals[indices[i+2]][2]));
-            elements.push_back(*newTriangle);
+            Triangle newTriangle;
+            newTriangle.P.push_back(glm::vec3(positions[indicies[i]][0], positions[indicies[i]][1], positions[indicies[i]][2]));
+            newTriangle.P.push_back(glm::vec3(positions[indicies[i+1]][0], positions[indicies[i+1]][1], positions[indicies[i+1]][2]));
+            newTriangle.P.push_back(glm::vec3(positions[indicies[i+2]][0], positions[indicies[i+2]][1], positions[indicies[i+2]][2]));
+            newTriangle.N.push_back(glm::vec3(normals[indicies[i]][0], normals[indicies[i]][1], normals[indicies[i]][2]));
+            newTriangle.N.push_back(glm::vec3(normals[indicies[i+1]][0], normals[indicies[i+1]][1], normals[indicies[i+1]][2]));
+            newTriangle.N.push_back(glm::vec3(normals[indicies[i+2]][0], normals[indicies[i+2]][1], normals[indicies[i+2]][2]));
+            elements.push_back(newTriangle);
         }
     };
 };
