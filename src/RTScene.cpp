@@ -63,9 +63,10 @@ void RTScene::buildTriangleSoup(void){
                 for (int j = 0; j < 3; j++) {
                     glm::vec3 p = t.P[j];
                     glm::vec3 n = t.N[j];
-                    glm::vec3 transformed_p = p;
-                    // glm::vec3 transformed_p(normalize((camera->view) * glm::vec4(p[0], p[1], p[2], 1.0f)));
-                    glm::vec3 transformed_n(transpose(inverse(cur_VM * cur->modeltransforms[i])) * glm::vec4(n[0], n[1], n[2], 1.0f));
+                    // glm::vec3 transformed_p = p;
+                    glm::mat4 inv = inverse(camera->view);
+                    glm::vec3 transformed_p(normalize(inv * (cur_VM * cur->modeltransforms[i]) * glm::vec4(p, 1.0f)));
+                    glm::vec3 transformed_n(transpose(inverse(cur_VM * cur->modeltransforms[i])) * glm::vec4(n, 1.0f));
                     t.P[j] = transformed_p;
                     t.N[j] = transformed_n;
                 }

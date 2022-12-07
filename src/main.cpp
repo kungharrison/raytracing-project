@@ -11,8 +11,8 @@
 #include "Ray.h"
 
 
-static const int width = 80;
-static const int height = 60;
+static const int width = 300;
+static const int height = 300;
 static const char* title = "Scene viewer";
 static Image image(width, height);
 static const glm::vec4 background(0.1f, 0.2f, 0.3f, 1.0f);
@@ -61,14 +61,14 @@ void initialize(void){
     // triangle.P = std::vector<glm::vec3>({p1, p2, p3});
     // triangle.N = std::vector<glm::vec3>({n1, n2, n3});
     // Camera c = Camera();
-    // c.aspect = (float)(width) / (float)(height);
-    // c.fovy = 30.0f;
+    // c.aspect = 135.0f / 90.0f;
+    // c.fovy = 90.0f;
     // c.target = glm::vec3(0.0f, 1.0f, 0.0f);
-    // c.eye = glm::vec3(0.0f, 1.0f, 5.0f);
+    // c.eye = glm::vec3(-5.0f, 1.0f, 0.0f);
     // c.up = glm::vec3(0.0f, 1.0f, 0.0f);
-    // int i = width / 2.0f;
-    // int j = height / 2.0f;
-    // Ray r = RayTracer::RayThruPixel(c, i, j, width, height);
+    // int i = 82;
+    // int j = 22;
+    // Ray r = RayTracer::RayThruPixel(c, i, j, 135, 90);
     // std::cout << r.dir[0] << " " << r.dir[1] << " " << r.dir[2] << std::endl;
 
     // Enable depth test
