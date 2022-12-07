@@ -1,6 +1,6 @@
 #include "Ray.h"
 
-void RayTracer::Raytrace(Camera cam, RTScene scene, Image &image) {
+void RayTracer::Raytrace(Camera cam, RTScene &scene, Image &image) {
     int w = image.width; int h = image.height;
     for (int j=0; j<h; j++){
         for (int i=0; i<w; i++){
@@ -40,7 +40,7 @@ Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
     return hit;
 }
 
-Intersection RayTracer::Intersect(Ray ray, RTScene scene) {
+Intersection RayTracer::Intersect(Ray ray, RTScene &scene) {
     float mindist = std::numeric_limits<float>::infinity();
     Intersection hit;
     for (Triangle t: scene.triangle_soup) { // Find closest intersection; test all objects
