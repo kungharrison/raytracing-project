@@ -79,11 +79,13 @@ void RTScene::buildTriangleSoup(void){
             // The draw command
             shader -> setUniforms();
             for (Triangle t: ( cur -> models[i] ) -> geometry -> elements) {
-                for (glm::vec3 point: t.P) {
-                    point = (shader -> modelview) * glm::vec4(point, 1);
+                for (glm::vec3 p: t.P) {
+                    glm::vec3 x((shader -> modelview) * glm::vec4(p[0], p[1], p[2], 1.0f));
+                    p = x;
                 }
-                for (glm::vec3 point: t.N) {
-                    point = transpose(inverse((shader -> modelview))) * glm::vec4(point, 1);
+                for (glm::vec3 p: t.N) {
+                    glm::vec3 x(transpose(inverse(shader -> modelview)) * glm::vec4(p[0], p[1], p[2], 1.0f));
+                    p = x;
                 }
                 t.material = ( cur -> models[i] ) -> material;
                 triangle_soup.push_back(t);
