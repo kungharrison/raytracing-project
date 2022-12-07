@@ -11,7 +11,7 @@
 #include "Ray.h"
 
 
-static const int width = 300;
+static const int width = 400;
 static const int height = 300;
 static const char* title = "Scene viewer";
 static Image image(width, height);
@@ -79,6 +79,8 @@ void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     RayTracer::Raytrace(*scene.camera, scene, image);
     image.draw();
+    // std::cout << scene.camera->eye.x << " " << scene.camera->eye.y << " " << scene.camera->eye.z << " " << std::endl;
+    // std::cout << scene.camera->up.x << " " << scene.camera->up.y << " " << scene.camera->up.z << " " << std::endl;
     
     glutSwapBuffers();
     glFlush();
