@@ -7,6 +7,7 @@ void RayTracer::Raytrace(Camera cam, RTScene &scene, Image &image) {
             Ray ray = RayThruPixel( cam, i, j, w, h );
             Intersection hit = Intersect( ray, scene );
             image.pixels[j + i * h] = FindColor(hit, 1);
+            std::cout << image.pixels[j + i * h] << std::endl;
         }
     }
 }
@@ -18,8 +19,8 @@ Ray RayTracer::RayThruPixel(Camera cam, int i, int j, int width, int height) {
     float beta = 1 - (2.0f * (j + 0.5f) / height);
     float tan = glm::tan(cam.fovy / 2.0f);
     glm::vec3 w = normalize(cam.eye - cam.target);
-    glm::vec3 u = normalize(cam.up * w);
-    glm::vec3 v = w * u;
+    glm::vec3 u = normalize(cross(cam.up, w));
+    glm::vec3 v = cross(w, u);
     ray.dir = normalize(alpha * cam.aspect * tan * u + beta * tan * v - w);
     return ray;
 }
@@ -55,7 +56,7 @@ Intersection RayTracer::Intersect(Ray ray, RTScene &scene) {
 
 glm::vec3 RayTracer::FindColor(Intersection hit, int recursion_depth) {
     glm::vec3 color = glm::vec3(1, 1, 1);
-    if (hit.dist == std::numeric_limits<float>::infinity()) color = glm::vec3(0, 0, 0);
+    if (hit.dist < std::numeric_limits<float>::infinity()) color = glm::vec3(0, 0, 0);
     // if (!hit.hit) return glm::vec3(0, 0, 0);
 
     // if (hit.material->texture) {

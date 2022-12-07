@@ -13,17 +13,6 @@ using namespace glm;
 void RTScene::buildTriangleSoup(void){
     // Pre-draw sequence: assign uniforms that are the same for all Geometry::draw call.  These uniforms include the camera view, proj, and the lights.  These uniform do not include modelview and material parameters.
     camera -> computeMatrices();
-    shader -> view = camera -> view;
-    shader -> projection = camera -> proj;
-    shader -> nlights = light.size();
-    shader -> lightpositions.resize( shader -> nlights );
-    shader -> lightcolors.resize( shader -> nlights );
-    int count = 0;
-    for (std::pair<std::string, Light*> entry : light){
-        shader -> lightpositions[ count ] = (entry.second) -> position;
-        shader -> lightcolors[ count ] = (entry.second) -> color;
-        count++;
-    }
     
     // Define stacks for depth-first search (DFS)
     std::stack < Node* > dfs_stack;
@@ -69,23 +58,16 @@ void RTScene::buildTriangleSoup(void){
         for ( size_t i = 0; i < cur -> models.size(); i++ ){
             // Prepare to draw the geometry. Assign the modelview and the material.
             
-            /**
-             * TODO: (HW3 hint: you should do something here)
-             */
-
-            shader -> modelview = cur_VM * cur->modeltransforms[i]; // TODO: HW3: Without updating cur_VM, modelview would just be camera's view matrix.
-            shader -> material  = ( cur -> models[i] ) -> material;
-            
             // The draw command
-            shader -> setUniforms();
             for (Triangle t: ( cur -> models[i] ) -> geometry -> elements) {
-                for (glm::vec3 p: t.P) {
-                    glm::vec3 x((shader -> modelview) * glm::vec4(p[0], p[1], p[2], 1.0f));
-                    p = x;
-                }
-                for (glm::vec3 p: t.N) {
-                    glm::vec3 x(transpose(inverse(shader -> modelview)) * glm::vec4(p[0], p[1], p[2], 1.0f));
-                    p = x;
+                for (int j = 0; j < 3; j++) {
+                    glm::vec3 p = t.P[j];
+                    glm::vec3 n = t.N[j];
+                    // glm::vec3 transformed_p((shader -> modelview) * glm::vec4(p[0], p[1], p[2], 1.0f));
+                    glm::vec3 transformed_p((cur_VM * cur->modeltransforms[i]) * glm::vec4(p[0], p[1], p[2], 1.0f));
+                    glm::vec3 transformed_n(transpose(inverse(cur_VM * cur->modeltransforms[i])) * glm::vec4(n[0], n[1], n[2], 1.0f));
+                    t.P[j] = transformed_p;
+                    t.N[j] = transformed_n;
                 }
                 t.material = ( cur -> models[i] ) -> material;
                 triangle_soup.push_back(t);

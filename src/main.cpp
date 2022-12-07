@@ -43,8 +43,33 @@ void initialize(void){
     
     // Initialize scene
     scene.init();
+    scene.buildTriangleSoup();
 
     image.initialize();
+
+    // Testing stuff
+    // Ray ray;
+    // ray.p0 = glm::vec3(0.0f, 0.0f, 0.0f);
+    // ray.dir = normalize(glm::vec3(0.0f, -0.1f, 1.0f));
+    // Triangle triangle;
+    // glm::vec3 p1 = glm::vec3(-1.0f, -1.0f, 1.0f);
+    // glm::vec3 p2 = glm::vec3(-1.0f, 1.0f, 1.0f);
+    // glm::vec3 p3 = glm::vec3(1.0f, -1.0f, 1.0f);
+    // glm::vec3 n1 = glm::vec3(0.0f, 0.0f, 0.0f);
+    // glm::vec3 n2 = glm::vec3(0.0f, 0.0f, 0.0f);
+    // glm::vec3 n3 = glm::vec3(0.0f, 0.0f, 0.0f);
+    // triangle.P = std::vector<glm::vec3>({p1, p2, p3});
+    // triangle.N = std::vector<glm::vec3>({n1, n2, n3});
+    // Camera c = Camera();
+    // c.aspect = (float)(width) / (float)(height);
+    // c.fovy = 30.0f;
+    // c.target = glm::vec3(0.0f, 1.0f, 0.0f);
+    // c.eye = glm::vec3(0.0f, 1.0f, 5.0f);
+    // c.up = glm::vec3(0.0f, 1.0f, 0.0f);
+    // int i = width / 2.0f;
+    // int j = height / 2.0f;
+    // Ray r = RayTracer::RayThruPixel(c, i, j, width, height);
+    // std::cout << r.dir[0] << " " << r.dir[1] << " " << r.dir[2] << std::endl;
 
     // Enable depth test
     glEnable(GL_DEPTH_TEST);

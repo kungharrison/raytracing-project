@@ -39,7 +39,7 @@ public:
 
         // convert above GLfloats into vector of all triangles
         		
-        for (int i = 0; i < 24 - 2; i++) {
+        for (int i = 0; i < 24; i+=3) {
             Triangle newTriangle = Triangle();
             newTriangle.P.push_back(glm::vec3(positions[i][0], positions[i][1], positions[i][2]));
             newTriangle.P.push_back(glm::vec3(positions[i+1][0], positions[i+1][1], positions[i+1][2]));

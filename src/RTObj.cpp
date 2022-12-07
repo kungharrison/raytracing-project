@@ -71,7 +71,7 @@ void RTObj::init(const char * filename){
     unsigned int n = temp_vertexIndices.size(); // #(triangles)*3
 
     // convert above GLfloats into vector of all triangles
-    for (int i = 0; i < (n-2); i++) {
+    for (int i = 0; i < n; i+=3) {
         std::vector<glm::vec3> PList;
         std::vector<glm::vec3> NList;
         Triangle *temp = new Triangle();
