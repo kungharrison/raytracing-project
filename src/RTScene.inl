@@ -64,6 +64,22 @@ void RTScene::init(void) {
     model["bulb"]->geometry = geometry["cube"];
     model["bulb"]->material = material["bulb"];
 
+    model["test_tri"] = new RTModel;
+    RTGeometry *geo = new RTGeometry();
+    geo->count = 1;
+    Triangle t;
+    t.P.push_back(glm::vec3(-1.0f, 1.0f, -2.0f));
+    t.P.push_back(glm::vec3(1.0f, 1.0f, -2.0f));
+    t.P.push_back(glm::vec3(0.0f, -1.0f, -2.0f));
+
+    
+    t.N.push_back(glm::vec3(-1.0f, 1.0f, -20.0f));
+    t.N.push_back(glm::vec3(1.0f, 1.0f, -20.0f));
+    t.N.push_back(glm::vec3(0.0f, -1.0f, -20.0f));
+    geo->elements.push_back(t);
+    model["test_tri"]->geometry = geo;
+    model["test_tri"]->material = material["wood"];
+
     // Create a light palette
     light["sun"] = new Light;
     light["sun"]->position = vec4(3.0f, 2.0f, 1.0f, 0.0f);
@@ -113,10 +129,12 @@ void RTScene::init(void) {
 
     // node["world"]->childnodes.push_back(node["table"]);
     // node["world"]->childtransforms.push_back(mat4(1.0f));
-    node["world"]->childnodes.push_back(node["bunny"]);
-    node["world"]->childtransforms.push_back(translate(vec3(-1.8f, 0.0f, 0.0f)) * rotate(90.0f * float(M_PI) / 180.0f, vec3(0.0f, 1.0f, 0.0f)));
+    // node["world"]->childnodes.push_back(node["bunny"]);
+    // node["world"]->childtransforms.push_back(translate(vec3(-1.8f, 0.0f, 0.0f)) * rotate(90.0f * float(M_PI) / 180.0f, vec3(0.0f, 1.0f, 0.0f)));
     // node["world"]->models.push_back(model["bulb"]);
     // node["world"]->modeltransforms.push_back(translate(vec3(0.0f, 2.0f, 0.0f)) * scale(vec3(0.1f)));
+    node["world"]->models.push_back(model["test_tri"]);
+    node["world"]->modeltransforms.push_back(translate(vec3(0.0f, 0.0f, 0.0f)));
 
     // Put a camera
     camera = new Camera;

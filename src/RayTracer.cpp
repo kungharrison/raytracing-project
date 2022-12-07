@@ -7,7 +7,6 @@ void RayTracer::Raytrace(Camera cam, RTScene &scene, Image &image) {
             Ray ray = RayThruPixel( cam, i, j, w, h );
             Intersection hit = Intersect( ray, scene );
             image.pixels[j + i * h] = FindColor(hit, 1);
-            std::cout << image.pixels[j + i * h] << std::endl;
         }
     }
 }
@@ -27,9 +26,9 @@ Ray RayTracer::RayThruPixel(Camera cam, int i, int j, int width, int height) {
 
 Intersection RayTracer::Intersect(Ray ray, Triangle triangle) {
     Intersection hit;
-    glm::mat4 x = inverse(glm::mat4(glm::vec4(triangle.P[0], 1), glm::vec4(triangle.P[1], 1), glm::vec4(triangle.P[2], 1), glm::vec4(-ray.dir, 0)));
+    glm::mat4 x = inverse(transpose(glm::mat4(glm::vec4(triangle.P[0], 1), glm::vec4(triangle.P[1], 1), glm::vec4(triangle.P[2], 1), glm::vec4(-ray.dir, 0))));
     glm::vec4 y = x * glm::vec4(ray.p0, 1);
-    if (y[0] < 0 || y[1] < 0 || y[2] < 0) {
+    if (y[0] < 0 || y[1] < 0 || y[2] < 0 || y[3] < 0) {
         hit.dist = std::numeric_limits<float>::infinity();
     } else {
         hit.dist = y[3];

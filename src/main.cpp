@@ -11,8 +11,8 @@
 #include "Ray.h"
 
 
-static const int width = 800;
-static const int height = 600;
+static const int width = 80;
+static const int height = 60;
 static const char* title = "Scene viewer";
 static Image image(width, height);
 static const glm::vec4 background(0.1f, 0.2f, 0.3f, 1.0f);
