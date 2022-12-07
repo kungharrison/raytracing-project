@@ -13,6 +13,17 @@ using namespace glm;
 void RTScene::buildTriangleSoup(void){
     // Pre-draw sequence: assign uniforms that are the same for all Geometry::draw call.  These uniforms include the camera view, proj, and the lights.  These uniform do not include modelview and material parameters.
     camera -> computeMatrices();
+    shader -> view = camera -> view;
+    shader -> projection = camera -> proj;
+    shader -> nlights = light.size();
+    shader -> lightpositions.resize( shader -> nlights );
+    shader -> lightcolors.resize( shader -> nlights );
+    int count = 0;
+    for (std::pair<std::string, Light*> entry : light){
+        shader -> lightpositions[ count ] = (entry.second) -> position;
+        shader -> lightcolors[ count ] = (entry.second) -> color;
+        count++;
+    }
     
     // Define stacks for depth-first search (DFS)
     std::stack < Node* > dfs_stack;
@@ -61,12 +72,12 @@ void RTScene::buildTriangleSoup(void){
             // The draw command
             for (Triangle t: ( cur -> models[i] ) -> geometry -> elements) {
                 for (int j = 0; j < 3; j++) {
-                    glm::vec3 p = t.P[j];
-                    glm::vec3 n = t.N[j];
+                    vec3 p = t.P[j];
+                    vec3 n = t.N[j];
                     // glm::vec3 transformed_p = p;
-                    glm::mat4 inv = inverse(camera->view);
-                    glm::vec3 transformed_p(normalize(inv * (cur_VM * cur->modeltransforms[i]) * glm::vec4(p, 1.0f)));
-                    glm::vec3 transformed_n(transpose(inverse(cur_VM * cur->modeltransforms[i])) * glm::vec4(n, 1.0f));
+                    mat4 inv = inverse(camera->view);
+                    vec3 transformed_p = vec3((inv * (cur_VM * cur->modeltransforms[i]) * vec4(p, 1.0f)));
+                    vec3 transformed_n(normalize(transpose(inverse(inv * (cur_VM * cur->modeltransforms[i]))) * vec4(n, 0.0f)));
                     t.P[j] = transformed_p;
                     t.N[j] = transformed_n;
                 }
