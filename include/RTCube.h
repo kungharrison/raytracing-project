@@ -39,15 +39,23 @@ public:
 
         // convert above GLfloats into vector of all triangles
         		
-        for (int i = 0; i < 24; i+=3) {
-            Triangle newTriangle = Triangle();
-            newTriangle.P.push_back(glm::vec3(positions[i][0], positions[i][1], positions[i][2]));
-            newTriangle.P.push_back(glm::vec3(positions[i+1][0], positions[i+1][1], positions[i+1][2]));
-            newTriangle.P.push_back(glm::vec3(positions[i+2][0], positions[i+2][1], positions[i+2][2]));
-            newTriangle.N.push_back(glm::vec3(normals[i][0], normals[i][1], normals[i][2]));
-            newTriangle.N.push_back(glm::vec3(normals[i + 1][0], normals[i + 1][1], normals[i + 1][2]));
-            newTriangle.N.push_back(glm::vec3(normals[i + 2][0], normals[i + 2][1], normals[i + 2][2]));
-            elements.push_back(newTriangle);
+        for (int i = 0; i < 24; i+=4) {
+            Triangle *newTriangle = new Triangle();
+            Triangle *newTriangle2 = new Triangle();
+            newTriangle->P.push_back(glm::vec3(positions[i][0], positions[i][1], positions[i][2]));
+            newTriangle->P.push_back(glm::vec3(positions[i+1][0], positions[i+1][1], positions[i+1][2]));
+            newTriangle->P.push_back(glm::vec3(positions[i+2][0], positions[i+2][1], positions[i+2][2]));
+            newTriangle->N.push_back(glm::vec3(normals[i][0], normals[i][1], normals[i][2]));
+            newTriangle->N.push_back(glm::vec3(normals[i + 1][0], normals[i + 1][1], normals[i + 1][2]));
+            newTriangle->N.push_back(glm::vec3(normals[i + 2][0], normals[i + 2][1], normals[i + 2][2]));
+            newTriangle2->P.push_back(glm::vec3(positions[i+1][0], positions[i+1][1], positions[i+1][2]));
+            newTriangle2->P.push_back(glm::vec3(positions[i + 2][0], positions[i + 2][1], positions[i + 2][2]));
+            newTriangle2->P.push_back(glm::vec3(positions[i + 3][0], positions[i + 3][1], positions[i + 3][2]));
+            newTriangle2->N.push_back(glm::vec3(normals[i+1][0], normals[i+1][1], normals[i+1][2]));
+            newTriangle2->N.push_back(glm::vec3(normals[i + 2][0], normals[i + 2][1], normals[i + 2][2]));
+            newTriangle2->N.push_back(glm::vec3(normals[i + 3][0], normals[i + 3][1], normals[i + 3][2]));
+            elements.push_back(*newTriangle);
+            elements.push_back(*newTriangle2);
         }
     };
 };
