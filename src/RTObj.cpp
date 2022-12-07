@@ -74,16 +74,16 @@ void RTObj::init(const char * filename){
     for (int i = 0; i < (n-2); i++) {
         std::vector<glm::vec3> PList;
         std::vector<glm::vec3> NList;
-        Triangle temp = new Triangle();
+        Triangle *temp = new Triangle();
         PList.push_back(temp_vertices[i]);
         PList.push_back(temp_vertices[i + 1]);
         PList.push_back(temp_vertices[i + 2]);
         NList.push_back(temp_normals[i]);
         NList.push_back(temp_normals[i + 1]);
         NList.push_back(temp_normals[i + 2]);
-        temp.P = PList;
-        temp.N = NList;
-        elements.push_back(temp);
+        temp->P = PList;
+        temp->N = NList;
+        elements.push_back(*temp);
     }
     std::cout << "done." << std::endl;
 }
