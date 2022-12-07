@@ -1,4 +1,10 @@
 .vs/
 out/build
-out/build/*
+out/build/**
 *.o
+out/build/x64-debug/.ninja_deps
+out/build/x64-debug/.ninja_log
+out/build/x64-debug/CMakeFiles/ModelViewer.dir/vc140.pdb
+out/build/x64-debug/ModelViewer.exe
+out/build/x64-debug/ModelViewer.ilk
+out/build/x64-debug/ModelViewer.pdb
