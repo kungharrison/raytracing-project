@@ -130,8 +130,8 @@ void RTScene::init(void) {
     camera->target_default = vec3(0.0f, 1.0f, 0.0f);
     // camera->eye_default = vec3(0.0f, 1.0f, 5.0f);
     // camera->up_default = vec3(0.0f, 1.0f, 0.0f);
-    camera->eye_default = vec3(-3.83022f, 3.06588f, 2.46202f);
-    camera->up_default = normalize(vec3(0.0f, 1.0f, 0.0f));
+    camera->eye_default = vec3(0.0f, 5.0f, 3.0f);
+    camera->up_default = vec3(0.0f, 1.0f, 0.0f);
     camera->reset();
 
     // Initialize shader

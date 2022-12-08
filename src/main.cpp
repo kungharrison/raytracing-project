@@ -30,9 +30,7 @@ void printHelp(){
       press 'A'/'Z' to zoom.
       press 'R' to reset camera.
       press 'L' to turn on/off the lighting.
-    
-      press Spacebar to generate images for hw3 submission.
-    
+        
 )";
 }
 
