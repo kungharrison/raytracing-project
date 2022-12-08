@@ -1,6 +1,26 @@
 # Raytracing Project Writeup
+
+![raytraced image](https://user-images.githubusercontent.com/53415491/206331723-e4e35208-1bb4-4e8c-902c-24c40a449ff4.png)
+
+Test scene with reflection of cubes on silver tabletop as well as shadows
+
 ## Authors
 Holden Adamec and Harrison Kung
+
+## Usage
+
+Firstly, clone this project's github repository.
+
+This program uses make for compliation. If you already have make installed, run the `make` command in the project root to generate the binaries.
+
+It creates a binary called SceneViewer. Type the following to run:
+
+```bash
+./SceneViewer
+```
+
+The output should take about 30 seconds to run and should look like the image above. You can modify RTScene.inl to generate your own scene with custom cubes and objects.
+
 ## Overview
 Raytracing Project for Computer Graphics 167. Modifies a basic diffuse and Blinn-Phong specular and ambient shading by replacing it with a recursive mirror reflection to generate raytraced graphics. This project uses raytracing through the creation of triangle geometry which uses rays from light sources to check for intersections with triangles and traces the light sources rays. 
 ## Topics
